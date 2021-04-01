@@ -264,6 +264,8 @@ L.ERROR_NO_PERMISSION				= "You don't have the required permission to do this."
 L.TIME_TOO_SHORT					= "Pull timer must be longer than 3 seconds."
 
 --Common Locals
+L.NONE								= "None"
+L.RANDOM							= "Random"
 L.NEXT								= "Next %s"
 L.COOLDOWN							= "%s CD"
 L.UNKNOWN							= "Unknown"--UNKNOWN which is "Unknown" (does u vs U matter?)
@@ -283,20 +285,26 @@ L.NORTH								= "North"
 L.SOUTH								= "South"
 L.INTERMISSION						= "Intermission"--No blizz global for this, and will probably be used in most end tier fights with intermission phases
 L.ORB								= "Orb"
+L.ORBS								= "Orbs"
 L.CHEST								= "Chest"--As in Treasure 'Chest'. Not Chest as in body part.
 L.NO_DEBUFF							= "Not %s"--For use in places like info frame where you put "Not Spellname"
 L.ALLY								= "Ally"--Such as "Move to Ally"
+L.ALLIES							= "Allies"--Such as "Move to Allies"
 L.ADD								= "Add"--A fight Add as in "boss spawned extra adds"
 L.ADDS								= "Adds"
 L.BIG_ADD							= "Big Add"
 L.BOSS								= "Boss"
-L.ROOM_EDGE							= "Room Edge"
+L.EDGE								= "Room Edge"
 L.FAR_AWAY							= "Far Away"
 L.BREAK_LOS							= "Break LOS"
+L.RESTORE_LOS						= "Restore/Maintain LOS"
 L.SAFE								= "Safe"
+L.NOTSAFE							= "Not Safe"
 L.SHIELD							= "Shield"
 L.PILLAR							= "Pillar"
 L.INCOMING							= "%s Incoming"
+L.BOSSTOGETHER						= "Bosses Together"
+L.BOSSAPART							= "Bosses Apart"
 --Common Locals end
 
 L.BREAK_USAGE						= "Break timer cannot be longer than 60 minutes. Make sure you're inputting time in minutes and not seconds."
