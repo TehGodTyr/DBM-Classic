@@ -391,7 +391,7 @@ end
 --  Create the frame  --
 ------------------------
 local function createTextFrame()
-	textFrame = CreateFrame("Frame", "DBMRangeCheck", UIParent)
+	textFrame = CreateFrame("Frame", "DBMRangeCheck", UIParent, DBM:IsShadowlands() and "BackdropTemplate")
 	textFrame:SetFrameStrata("DIALOG")
 	textFrame:SetBackdrop({
 		bgFile		= "Interface\\DialogFrame\\UI-DialogBox-Background", -- 131071
