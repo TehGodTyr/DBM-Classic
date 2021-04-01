@@ -37,6 +37,7 @@ frame.backdropInfo = {
 }
 
 if DBM:IsShadowlands() then
+	Mixin(frame, BackdropTemplateMixin)--TODO, why is this needed on TBC but not retail?
 	frame:ApplyBackdrop()
 else
 	frame:SetBackdrop(frame.backdropInfo)
