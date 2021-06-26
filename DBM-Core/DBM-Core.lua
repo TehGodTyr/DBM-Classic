@@ -6709,13 +6709,13 @@ function DBM:GetStage(modId)
 	if modId then
 		local mod = self:GetModByName(modId)
 		if mod and mod.inCombat then
-			return mod.vb.phase
+			return mod.vb.phase or 0
 		end
 	else
 		if #inCombat > 0 then--At least one boss is engaged
 			local mod = inCombat[1]--Get first mod in table
 			if mod then
-				return mod.vb.phase
+				return mod.vb.phase or 0
 			end
 		end
 	end
