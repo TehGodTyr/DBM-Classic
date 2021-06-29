@@ -4344,6 +4344,7 @@ do
 	local syncHandlers = {}
 	local whisperSyncHandlers = {}
 	local guildSyncHandlers = {}
+	local bossesEngaged = {}
 
 	-- DBM uses the following prefixes since 4.1 as pre-4.1 sync code is going to be incompatible anways, so this is the perfect opportunity to throw away the old and long names
 	-- M = Mod
