@@ -5938,7 +5938,7 @@ do
 					mod:OnTimerRecovery()
 				end
 			end
-			if savedDifficulty == "worldboss" and not mod.noWBEsync then
+			if savedDifficulty == "worldboss" and mod.WBEsync then
 				if lastBossEngage[modId..playerRealm] and (GetTime() - lastBossEngage[modId..playerRealm] < 30) then return end--Someone else synced in last 10 seconds so don't send out another sync to avoid needless sync spam.
 				lastBossEngage[modId..playerRealm] = GetTime()--Update last engage time, that way we ignore our own sync
 				SendWorldSync(self, "WBE", modId.."\t"..playerRealm.."\t"..startHp.."\t8\t"..name)
@@ -6114,7 +6114,7 @@ do
 					sendWhisper(k, msg)
 				end
 				fireEvent("DBM_Kill", mod)
-				if savedDifficulty == "worldboss" and not mod.noWBEsync then
+				if savedDifficulty == "worldboss" and mod.WBEsync then
 					if lastBossDefeat[modId..playerRealm] and (GetTime() - lastBossDefeat[modId..playerRealm] < 30) then return end--Someone else synced in last 10 seconds so don't send out another sync to avoid needless sync spam.
 					lastBossDefeat[modId..playerRealm] = GetTime()--Update last defeat time before we send it, so we don't handle our own sync
 					SendWorldSync(self, "WBD", modId.."\t"..playerRealm.."\t8\t"..name)
@@ -11339,8 +11339,8 @@ function bossModPrototype:RegisterCombat(cType, ...)
 	if self.noRegenDetection then
 		info.noRegenDetection = self.noRegenDetection
 	end
-	if self.noWBEsync then
-		info.noWBEsync = self.noWBEsync
+	if self.WBEsync then
+		info.WBEsync = self.WBEsync
 	end
 	if self.noBossDeathKill then
 		info.noBossDeathKill = self.noBossDeathKill
@@ -11453,10 +11453,10 @@ function bossModPrototype:DisableRegenDetection()
 	end
 end
 
-function bossModPrototype:DisableWBEngageSync()
-	self.noWBEsync = true
+function bossModPrototype:EnableWBEngageSync()
+	self.WBEsync = true
 	if self.combatInfo then
-		self.combatInfo.noWBEsync = true
+		self.combatInfo.WBEsync = true
 	end
 end
 
