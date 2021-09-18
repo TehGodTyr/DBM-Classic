@@ -1,47 +1,41 @@
-package-as: DBM-Core
+package-as: DBM-Azeroth
 
 externals:
-  DBM-Core/Libs/CallbackHandler-1.0: https://repos.wowace.com/wow/callbackhandler/trunk/CallbackHandler-1.0
-
-  DBM-Core/Libs/LibChatAnims: https://repos.wowace.com/wow/libchatanims/trunk/LibChatAnims
-  DBM-Core/Libs/LibDataBroker-1.1: git://github.com/tekkub/libdatabroker-1-1.git
-  DBM-Core/Libs/LibDBIcon-1.0: https://repos.wowace.com/wow/libdbicon-1-0/trunk/LibDBIcon-1.0
-  DBM-Core/Libs/LibDurability: https://repos.wowace.com/wow/libdurability/trunk/LibDurability
-  DBM-Core/Libs/LibLatency: https://repos.wowace.com/wow/liblatency/trunk/LibLatency
-  DBM-Core/Libs/LibSharedMedia-3.0: https://repos.wowace.com/wow/libsharedmedia-3-0/trunk/LibSharedMedia-3.0
-  DBM-Core/Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
-  DBM-Core/Libs/LibDeflate:
-    url: https://github.com/SafeteeWoW/LibDeflate
-    tag: latest
-  DBM-Core/Libs/LibSerialize:
-    url: https://github.com/rossnichols/LibSerialize
-    tag: latest
+  DBM-Azeroth: https://github.com/DeadlyBossMods/DBM-Unified
+  DBM-Azeroth/Libs/CallbackHandler-1.0: https://repos.wowace.com/wow/callbackhandler/trunk/CallbackHandler-1.0
+  DBM-Azeroth/Libs/LibChatAnims: https://repos.wowace.com/wow/libchatanims/trunk/LibChatAnims
+  DBM-Azeroth/Libs/LibDBIcon-1.0: https://repos.wowace.com/wow/libdbicon-1-0/trunk/LibDBIcon-1.0
+  DBM-Azeroth/Libs/LibDurability: https://repos.wowace.com/wow/libdurability/trunk/LibDurability
+  DBM-Azeroth/Libs/LibLatency: https://repos.wowace.com/wow/liblatency/trunk/LibLatency
+  DBM-Azeroth/Libs/LibSharedMedia-3.0: https://repos.wowace.com/wow/libsharedmedia-3-0/trunk/LibSharedMedia-3.0
+  DBM-Azeroth/Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
+  DBM-Azeroth/Libs/LibDataBroker-1.1: https://github.com/tekkub/libdatabroker-1-1
+  DBM-Azeroth/Libs/LibDeflate: https://github.com/SafeteeWoW/LibDeflate
+  DBM-Azeroth/Libs/LibSerialize: https://github.com/rossnichols/LibSerialize
 
 ignore:
-  - DBM-Core/!SortList.txt
-  - DBM-Core/Boss Mods.luadoc
-  - DBM-Core/Libs/LibDeflate/docs
-  - DBM-Core/Libs/LibDeflate/examples
-  - DBM-Core/Libs/LibDeflate/LibDeflate.toc
-  - DBM-Core/Libs/LibDeflate/README.md
-  - DBM-Core/Libs/LibDeflate/CONTRIBUTING.md
-  - DBM-Core/Libs/LibDeflate/changelog.md
-  - DBM-Core/Libs/LibStub/tests
-  - DBM-Core/Libs/LibDataBroker-1.1/README.textile
+  - DBM-Azeroth/Libs/LibDeflate/docs
+  - DBM-Azeroth/Libs/LibDeflate/examples
+  - DBM-Azeroth/Libs/LibDeflate/LibDeflate.toc
+  - DBM-Azeroth/Libs/LibDeflate/README.md
+  - DBM-Azeroth/Libs/LibDeflate/CONTRIBUTING.md
+  - DBM-Azeroth/Libs/LibDeflate/changelog.md
+  - DBM-Azeroth/Libs/LibStub/tests
+  - DBM-Azeroth/Libs/LibDataBroker-1.1/README.textile
 
 enable-nolib-creation: no
 
 move-folders:
-  DBM-Core/DBM-DefaultSkin: DBM-DefaultSkin
-  DBM-Core/DBM-GUI: DBM-GUI
-  DBM-Core/DBM-StatusBarTimers: DBM-StatusBarTimers
-  DBM-Core/DBM-Core: DBM-Core
-  DBM-Core/DBM-Party-Classic: DBM-Party-Classic
-  DBM-Core/DBM-AQ20: DBM-AQ20
-  DBM-Core/DBM-AQ40: DBM-AQ40
-  DBM-Core/DBM-Azeroth: DBM-Azeroth
-  DBM-Core/DBM-BWL: DBM-BWL
-  DBM-Core/DBM-MC: DBM-MC
-  DBM-Core/DBM-Onyxia: DBM-Onyxia
-  DBM-Core/DBM-Naxx: DBM-Naxx
-  DBM-Core/DBM-ZG: DBM-ZG
+  DBM-Azeroth/DBM-Party-Classic: DBM-Party-Classic
+  DBM-Azeroth/DBM-AQ20: DBM-AQ20
+  DBM-Azeroth/DBM-AQ40: DBM-AQ40
+  DBM-Azeroth/DBM-Azeroth: DBM-Azeroth
+  DBM-Azeroth/DBM-BWL: DBM-BWL
+  DBM-Azeroth/DBM-MC: DBM-MC
+  DBM-Azeroth/DBM-Onyxia: DBM-Onyxia
+  DBM-Azeroth/DBM-Naxx: DBM-Naxx
+  DBM-Azeroth/DBM-ZG: DBM-ZG
+  DBM-Azeroth/DBM-Core: DBM-Core
+  DBM-Azeroth/DBM-GUI: DBM-GUI
+  DBM-Azeroth/DBM-StatusBarTimers: DBM-StatusBarTimers
+  DBM-Azeroth/Libs: DBM-Core/Libs

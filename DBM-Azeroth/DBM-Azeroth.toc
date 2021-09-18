@@ -1,5 +1,6 @@
 ## Interface: 11307
 ## X-Min-Interface: 11302
+## Version: @project-version@
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Azeroth (Classic)|r
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Azeroth (Classic)|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Azeroth (Clásico)|r
@@ -34,6 +35,10 @@
 ## X-DBM-Mod-LoadCID: 14889,14888,14887,14890,12397,6109
 ## X-DBM-Mod-MinCoreRevision: 12473
 ## X-DBM-Mod-MinExpansion: 0
+## X-Curse-Project-ID: 3358
+## X-WoWI-ID: 8814
+## X-Wago-ID: qv633o6b
+
 localization.en.lua
 localization.de.lua
 localization.br.lua
@@ -45,6 +50,7 @@ localization.kr.lua
 localization.tw.lua
 localization.cn.lua
 KazzakClassic.lua
+
 Azuregos.lua
 Taerar.lua
 Ysondre.lua
