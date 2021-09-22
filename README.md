@@ -32,7 +32,7 @@ Multiple alpha versions can get pushed to Curse on an average day, these version
 Right click on DBM itself in your addon client addon list and set to preferred release type to control update frequency.
 
 ## Features
-* Mods for raid, dungeon, special event and Brawlers Guild
+* Mods for raids and dungeons
 * Colored raid warnings (players will be colored according to their class) with icons and to the point messaging. DBM aims to let you know what to do for something, not just show you a spell name.
 * A big focus on filtering/hiding what you don't need to know for your role (or what you can't do anything about such as dispel/interrupt on cooldown), so you can focus on the information you do need, while also maintaining ability to disable these filters for leaders that do want a larger overview of fight events.
 * Auto-respond during boss fights. DBM will inform anyone who whispers you during a boss fight that you are busy. These messages contain the name and health of the boss as well as the raid's status. This feature is completely optional and can be disabled by player or even raid leader for the entire group.
