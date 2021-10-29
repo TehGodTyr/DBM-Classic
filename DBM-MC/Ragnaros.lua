@@ -22,6 +22,7 @@ mod:RegisterEventsInCombat(
 
 --[[
 ability.id = 20566 and type = "cast" or target.id = 12143 and type = "death"
+ or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
 local warnWrathRag		= mod:NewSpellAnnounce(20566, 3)
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
@@ -44,9 +45,7 @@ function mod:OnCombatStart(delay)
 	self.vb.addLeft = 0
 	self.vb.ragnarosEmerged = true
 	timerWrathRag:Start(26.7-delay)
-	if not self:IsSeasonal() then--On SoM it's health based to prevent zerg strats
-		timerSubmerge:Start(180-delay)
-	end
+	timerSubmerge:Start(180-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(18)
 	end
@@ -84,9 +83,7 @@ local function emerged(self)
 	timerEmerge:Stop()
 	warnEmerge:Show()
 	timerWrathRag:Start(26.7)--need to find out what it is first.
-	if not self:IsSeasonal() then
-		timerSubmerge:Start(180)
-	end
+	timerSubmerge:Start(180)
 end
 
 do
@@ -146,10 +143,11 @@ function mod:OnSync(msg, guid)
 		self.vb.ragnarosEmerged = false
 		self:Unschedule(emerged)
 		timerWrathRag:Stop()
+		timerSubmerge:Stop()
 		warnSubmerge:Show()
-		local timer = self:IsSeasonal() and 180 or 90--Not confirmed, just from streamer notes
-		timerEmerge:Start(timer)
-		self:Schedule(timer, emerged, self)
+--		local timer = self:IsSeasonal() and 180 or 90--Not confirmed, just from streamer notes
+		timerEmerge:Start(90)
+		self:Schedule(90, emerged, self)
 		self.vb.addLeft = self.vb.addLeft + 8
 	--[[elseif msg == "AddDied" and self:IsInCombat() and guid and not addsGuidCheck[guid] then
 		--A unit died we didn't detect ourselves, so we correct our adds counter from sync
