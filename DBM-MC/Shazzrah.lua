@@ -27,7 +27,7 @@ local specWarnGate			= mod:NewSpecialWarningTaunt(23138, "Tank", 2, nil, 1, 2)--
 
 local timerCurseCD			= mod:NewCDTimer(22, 19713, nil, nil, nil, 3, nil, DBM_CORE_L.CURSE_ICON)--22-25.5 (20-25?)
 local timerDeadenMagic		= mod:NewBuffActiveTimer(30, 19714, nil, false, 3, 5, nil, DBM_CORE_L.MAGIC_ICON)
-local timerGateCD			= mod:NewCDTimer(41.3, 23138, nil, "Tank", 2, 5, nil, DBM_CORE_L.TANK_ICON)--41-50
+local timerGateCD			= mod:NewCDTimer(41.3, 23138, nil, nil, 3, 5, nil, DBM_CORE_L.TANK_ICON)--41-50 (25-40 in SoM)
 local timerCounterSpellCD	= mod:NewCDTimer(15, 19715, nil, "SpellCaster", nil, 3)--15-19
 
 function mod:OnCombatStart(delay)
@@ -70,12 +70,12 @@ do
 		--elseif args.spellId == 19715 then
 		elseif spellName == Counterspell and args:IsSrcTypeHostile() then
 			warnCntrSpell:Show()
-			timerCounterSpellCD:Start()
+			timerCounterSpellCD:Start(self:IsSeasonal() and 10 or 15)
 		--elseif args.spellId == 23138 then
 		elseif spellName == Gate then
 			specWarnGate:Show(args.sourceName)
 			specWarnGate:Play("tauntboss")
-			timerGateCD:Start()
+			timerGateCD:Start(self:IsSeasonal() and 25 or 41.3)--NOT CONFIRMED, someone on stream said it
 		end
 	end
 end

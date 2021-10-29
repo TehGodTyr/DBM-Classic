@@ -20,8 +20,19 @@ local warnImmolate			= mod:NewTargetNoFilterAnnounce(15732, 2, nil, false, 3)--S
 
 local timerAntiMagicPulseCD	= mod:NewCDTimer(15.7, 19492, nil, nil, nil, 2)--15.7-20 variation
 
+mod:AddRangeFrameOption(10, 20508)
+
 function mod:OnCombatStart(delay)
 	timerAntiMagicPulseCD:Start(10-delay)
+	if self:IsSeasonal() and self.Options.RangeFrame then
+		DBM.RangeCheck:Show(10)
+	end
+end
+
+function mod:OnCombatEnd(wipe)
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 do

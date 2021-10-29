@@ -12,6 +12,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, quake not in combat log on classic?
+--TODO, tank swaps when debuff is known for SoM
 local warnQuake		= mod:NewSpellAnnounce(20553)
 
 do

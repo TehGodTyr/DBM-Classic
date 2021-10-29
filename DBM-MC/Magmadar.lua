@@ -19,13 +19,14 @@ mod:RegisterEventsInCombat(
 (ability.id = 19408 or ability.id = 19451) and type = "cast"
  or ability.id = 19428 and type = "applydebuff"
 --]]
+--TODO, script that spawns adds isn't in combat log, so will probably need scheduled loop since classic also doesn't have UNIT_SPELLCAST events
 local warnPanic			= mod:NewSpellAnnounce(19408, 2)
 local warnEnrage		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Healer|Tank|RemoveEnrage", 2)
 local warnConflagration	= mod:NewTargetNoFilterAnnounce(19428, 2, nil , false)
 
 local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 6)
 
-local timerPanicCD		= mod:NewCDTimer(30, 19408, nil, nil, nil, 2)--30-40
+local timerPanicCD		= mod:NewCDTimer(30, 19408, nil, nil, nil, 2)--30-50
 local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_CORE_L.ENRAGE_ICON)
 
 do
