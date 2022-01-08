@@ -44,10 +44,11 @@ do
 	local MindControl = DBM:GetSpellInfo(20604)
 	function mod:MCTarget(targetname, uId)
 		if not targetname then return end
+		if not DBM:GetRaidRoster(targetname) then return end--Ignore junk target scans that include pets
 		if self.Options.SetIconOnMC then
 			self:SetIcon(targetname, self.vb.lastIcon)
 		end
-		warnMC:CombinedShow(1, targetname)
+		warnMC:CombinedShow(0.3, targetname)--Shorter throttle in the target scan since point of target scan is actual early warning
 		if targetname == UnitName("player") then
 			specWarnMC:Show()
 			specWarnMC:Play("targetyou")
