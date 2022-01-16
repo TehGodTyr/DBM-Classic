@@ -27,8 +27,8 @@ local warnConflagration	= mod:NewTargetNoFilterAnnounce(19428, 2, nil , false)
 local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 6)
 
 local timerPanicCD		= mod:NewCDTimer(30, 19408, nil, nil, nil, 2)--30-50
-local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_CORE_L.ENRAGE_ICON)
-local timerAddsCD		= mod:NewAddsTimer(60, 19497, nil, "-Healer", nil, 1, nil, DBM_CORE_L.DAMAGE_ICON)--Use 363731 if it has better icon?
+local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerAddsCD		= mod:NewAddsTimer(60, 19497, nil, "-Healer", nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)--Use 363731 if it has better icon?
 
 function mod:OnCombatStart(delay)
 	if self:IsSeasonal() then

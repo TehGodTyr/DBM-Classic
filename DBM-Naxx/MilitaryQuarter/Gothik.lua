@@ -163,7 +163,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(mobCounts)
 
 	if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:SetHeader(DBM_CORE_L.ADDS)
+		DBM.InfoFrame:SetHeader(DBM_COMMON_L.ADDS)
 		DBM.InfoFrame:Show(8, "function", updateInfoFrame, false, false)
 		DBM.InfoFrame:SetColumns(1)
 	end
