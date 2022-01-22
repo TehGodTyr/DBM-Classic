@@ -6,7 +6,8 @@ mod:SetCreatureID(12056)
 mod:SetEncounterID(668)
 mod:SetModelID(12129)
 mod:SetUsedIcons(1, 2, 3)
-mod:SetHotfixNoticeRev(20191122000000)--2019, 11, 22
+mod:SetHotfixNoticeRev(20220122000000)
+mod:SetMinSyncRevision(20220122000000)
 
 mod:RegisterCombat("combat")
 

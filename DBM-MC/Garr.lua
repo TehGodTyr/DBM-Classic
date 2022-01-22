@@ -6,6 +6,8 @@ mod:SetCreatureID(12057)--, 12099
 mod:SetEncounterID(666)
 mod:SetModelID(12110)
 mod:RegisterCombat("combat")
+mod:SetHotfixNoticeRev(20220122000000)
+mod:SetMinSyncRevision(20220122000000)
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 15732",
