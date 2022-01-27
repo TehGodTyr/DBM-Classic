@@ -12,6 +12,7 @@ externals:
   DBM-Azeroth/Libs/LibDataBroker-1.1: https://github.com/tekkub/libdatabroker-1-1
   DBM-Azeroth/Libs/LibDeflate: https://github.com/SafeteeWoW/LibDeflate
   DBM-Azeroth/Libs/LibSerialize: https://github.com/rossnichols/LibSerialize
+  DBM-VPVEM: https://github.com/DeadlyBossMods/DBM-Voicepack-VEM
 
 ignore:
   - DBM-Azeroth/Libs/LibDeflate/docs
@@ -22,6 +23,7 @@ ignore:
   - DBM-Azeroth/Libs/LibDeflate/changelog.md
   - DBM-Azeroth/Libs/LibStub/tests
   - DBM-Azeroth/Libs/LibDataBroker-1.1/README.textile
+  - DBM-VPVEM/README.md
 
 enable-nolib-creation: no
 
@@ -39,3 +41,4 @@ move-folders:
   DBM-Azeroth/DBM-GUI: DBM-GUI
   DBM-Azeroth/DBM-StatusBarTimers: DBM-StatusBarTimers
   DBM-Azeroth/Libs: DBM-Core/Libs
+  DBM-Azeroth/DBM-VPVEM/DBM-VPVEM: DBM-VPVEM
