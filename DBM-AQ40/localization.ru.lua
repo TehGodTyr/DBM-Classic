@@ -59,14 +59,14 @@ L:SetOptionLocalization{
 	WarnShatter	= "Объявлять статус Раскола"
 }
 L:SetMiscLocalization{
-	Slow 		= "замедляется!",
-	Freezing 	= "замораживается!",
-	Frozen	 	= "застывает!",
-	Phase4 		= "начинает раскалываться!",
-	Phase5 		= "едва держится!",
-	Phase6 		= "взрывается!",
+	Slow	= "замедляется!",
+	Freezing= "замораживается!",
+	Frozen	= "застывает!",
+	Phase4 	= "Нечистотон начинает раскалываться!",
+	Phase5 	= "Нечистотон едва держится!",
+	Phase6 	= "взрывается!",
 
-	HitsRemain	= "Ударов Осталось",
+	HitsRemain	= "Ударов осталось",
 	Frost		= "Лёд",
 	Physical	= "Физический урон"
 }
@@ -100,38 +100,38 @@ L:SetGeneralLocalization{
 	name = "К'Тун"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle 	= "Глазной отросток",
-	WarnClawTentacle2	= "Когтещупальце",
-	WarnGiantEyeTentacle	= "Огромное глазастое щупальце",
-	WarnGiantClawTentacle	= "Гигантский когтещуп",
-	WarnWeakened 		= "К'Тун ослаблен!"
+	WarnEyeTentacle 	= "Глазной отросток!",
+	WarnClawTentacle2	= "Когтещупальце!",
+	WarnGiantEyeTentacle	= "Гигантское глазное щупальце!",
+	WarnGiantClawTentacle	= "Гигантское когтещупальце!",
+	WarnWeakened 		= "К'Тун ослаблен! Бейте его!"
 }
 L:SetTimerLocalization{
 	TimerEyeTentacle	= "Глазной отросток",
-	TimerGiantEyeTentacle	= "Огромное глазастое щупальце",
+	TimerGiantEyeTentacle	= "Гигантское глазное щупальце",
 	TimerClawTentacle	= "Когтещупальце",
-	TimerGiantClawTentacle	= "Гигантский когтещуп",
-	TimerWeakened		= "Ослаблен закончен"
+	TimerGiantClawTentacle	= "Гигантское когтещупальце",
+	TimerWeakened		= "К'Тун ослаблен"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "Показывать предупреждение для Глазного отростка",
 	WarnClawTentacle2		= "Показывать предупреждение для Когтещупальца",
-	WarnGiantEyeTentacle	= "Показывать предупреждение для Огромного глазастого щупальца",
-	WarnGiantClawTentacle	= "Показывать предупреждение для Гигантского когтещупа",
+	WarnGiantEyeTentacle	= "Показывать предупреждение для Гигантского глазного щупальца",
+	WarnGiantClawTentacle	= "Показывать предупреждение для Гигантского когтещупальца",
 	SpecWarnWeakened		= "Показывать специальное предупреждение, когда босс ослаблен",
 	TimerEyeTentacle		= "Показывать таймер до следующего Глазного отростка",
 	TimerClawTentacle		= "Показывать таймер до следующего Когтещупальца",
-	TimerGiantEyeTentacle	= "Показывать таймер до следующего Огромного глазастого щупальца",
-	TimerGiantClawTentacle	= "Показывать таймер до следующего Гигантского когтещупа",
-	TimerWeakened			= "Показывать таймер продолжительности ослабления босса",
-	RangeFrame				= "Показывать индикатор расстояния (10)"
+	TimerGiantEyeTentacle	= "Показывать таймер до следующего Гигантского глазного щупальца",
+	TimerGiantClawTentacle	= "Показывать таймер до следующего Гигантского когтещупальца",
+	TimerWeakened			= "Показывать таймер длительности ослабления босса",
+	RangeFrame				= "Показывать окно дистанции (10м)"
 }
 L:SetMiscLocalization{
 	Stomach		= "Живот",
 	Eye			= "Око К'Туна",
 	FleshTent	= "Мясистое щупальце",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "ослаблен!",
-	NotValid	= "АК40 частично зачищен. %s необязательные боссы остались."
+	NotValid	= "АК40 частично очищен. Осталось %s необязательных боссов."
 }
 ----------------
 -- Ouro --
@@ -143,7 +143,9 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Закапывание",
-	WarnEmerge			= "Появление"
+	WarnEmerge			= "Появление",
+	WarnSubmergeSoon	= "Скоро закапывание",
+	WarnEmergeSoon		= "Скоро появление"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Закапывание",
@@ -151,15 +153,18 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "Показывать предупреждение о закапывании",
+	WarnSubmergeSoon	= "Предупреждать заранее о закапывании",
 	TimerSubmerge		= "Показывать таймер до закапывания",
 	WarnEmerge			= "Показывать предупреждение о появлении",
+	WarnEmergeSoon		= "Предупреждать заранее о появлении",
 	TimerEmerge			= "Показывать таймер до появления"
 }
+
 ----------------
 -- AQ40 Trash --
 ----------------
 L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
-	name = "АК40: Треш"
+	name = "Трэш мобы Ан'Кираж 40"
 }
