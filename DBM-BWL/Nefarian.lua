@@ -153,11 +153,11 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:OnSync(msg, arg)
+function mod:OnSync(msg, arg, sender)
 	if self:AntiSpam(5, msg) then
 		--Do nothing, this is just an antispam threshold for syncing
 	end
-	if msg == "Phase" and arg then
+	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
 		if phase == 2 then
 			self:SetStage(2)

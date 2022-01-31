@@ -68,11 +68,11 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	end
 end
 
-function mod:OnSync(msg, count)
-	if msg == "Shatter" and count then
+function mod:OnSync(msg, count, sender)
+	if msg == "Shatter" and sender then
 		count = tonumber(count)
 		warnShatter:Show(count)
-	elseif msg == "Freeze" and count then
+	elseif msg == "Freeze" and sender then
 		count = tonumber(count)
 		warnFreeze:Show(count)
 		if count == 3 then

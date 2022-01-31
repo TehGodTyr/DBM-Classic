@@ -229,7 +229,7 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:OnSync(msg, spawnUid, pct)
+function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
 	if msg == "Weakened" then
 		table.wipe(fleshTentacles)

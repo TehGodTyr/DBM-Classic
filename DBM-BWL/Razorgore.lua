@@ -108,7 +108,7 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:OnSync(msg, name)
+function mod:OnSync(msg)
 	if msg == "Phase2" and self.vb.phase < 2 then
 		warnPhase2:Show()
 		self:SetStage(2)

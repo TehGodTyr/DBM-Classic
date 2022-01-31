@@ -132,8 +132,6 @@ function mod:UNIT_DIED(args)
 	local guid = args.destGUID
 	local cid = self:GetCIDFromGUID(guid)
 	if cid == 12143 then--Son of Flame
-		--self:SendSync("AddDied", guid)--Send sync it died do to combat log range and size of room
-		--We're in range of event, no reason to wait for sync, especially in a raid that might not have many DBM users
 		if not addsGuidCheck[guid] then
 			addsGuidCheck[guid] = true
 			self.vb.addLeft = self.vb.addLeft - 1
@@ -166,14 +164,6 @@ function mod:OnSync(msg, guid)
 		timerEmerge:Start(90)
 		self:Schedule(90, emerged, self)
 		self.vb.addLeft = self.vb.addLeft + 8
-	--[[elseif msg == "AddDied" and self:IsInCombat() and guid and not addsGuidCheck[guid] then
-		--A unit died we didn't detect ourselves, so we correct our adds counter from sync
-		addsGuidCheck[guid] = true
-		self.vb.addLeft = self.vb.addLeft - 1
-		if not self.vb.ragnarosEmerged and self.vb.addLeft == 0 then--After all 8 die he emerges immediately
-			self:Unschedule(emerged)
-			emerged(self)
-		end--]]
 	elseif msg == "DomoDeath" and self:AntiSpam(5, 3) then
 		--The timer between yell/summon start and ragnaros being attackable is variable, but time between domo death and him being attackable is not.
 		--As such, we start lowest timer of that variation on the RP start, but adjust timer if it's less than 10 seconds at time domo dies

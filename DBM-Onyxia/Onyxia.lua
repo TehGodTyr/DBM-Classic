@@ -183,7 +183,7 @@ function mod:UNIT_HEALTH(uId)
 	end
 end
 
-function mod:OnSync(msg, guid)
+function mod:OnSync(msg, guid, sender)
 	if not self:IsInCombat() then return end
 	if msg == "Breath" and self:AntiSpam(8, 1) then
 		specWarnBreath:Show()
@@ -224,7 +224,7 @@ function mod:OnSync(msg, guid)
 			self:Schedule(35, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Onyxia\\sounds\\hit-it-like-you-mean-it.ogg")
 			self:Schedule(45, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Onyxia\\sounds\\now-hit-it-very-hard-and-fast.ogg")
 		end
-	elseif msg == "Fireball" and guid and self:AntiSpam(3, 2) then
+	elseif msg == "Fireball" and sender and self:AntiSpam(3, 2) then
 		self:BossTargetScanner(guid, "FireballTarget", 0.3, 6)
 	elseif msg == "Fear" and self:AntiSpam(3, 3) then
 		specWarnBellowingRoar:Show()

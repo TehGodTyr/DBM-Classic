@@ -64,9 +64,9 @@ end
 
 do
 	local playerName = UnitName("player")
-	function mod:OnSync(msg, targetName)
+	function mod:OnSync(msg, targetName, sender)
 		if not self:IsInCombat() then return end
-		if msg == "Mark" and targetName and self:AntiSpam(5, 1) then
+		if msg == "Mark" and sender and self:AntiSpam(5, 1) then
 			if targetName == playerName then
 				specWarnMark:Show()
 				specWarnMark:Play("targetyou")
