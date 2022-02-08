@@ -33,6 +33,7 @@ local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2, nil, DBM_COMM
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6, nil, nil, 1, 5)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6, nil, nil, 1, 5)
 local timerCombatStart	= mod:NewTimer(78, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)
+mod:AddTimerLine(DBM_COMMON_L.SEASONAL)
 local timerAddsCD		= mod:NewAddsCustomTimer(60, 19497, nil, "-Healer", nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
 
 mod:AddRangeFrameOption("18", nil, "-Melee")

@@ -20,9 +20,23 @@ local warnFlameBuffet		= mod:NewCountAnnounce(23341, 3, nil, nil, DBM_CORE_L.AUT
 local timerWingBuffet		= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)--Verified on classic 31-36
 local timerShadowFlameCD	= mod:NewCDTimer(14, 22539, nil, false)--14-21
 
+if mod:IsSeasonal() then
+	mod:AddTimerLine(DBM_COMMON_L.SEASONAL)
+	mod:AddRangeFrameOption(10, 366305)
+end
+
 function mod:OnCombatStart(delay)
 	timerShadowFlameCD:Start(18-delay)
 	timerWingBuffet:Start(30-delay)
+	if self:IsSeasonal() and self.Options.RangeFrame then
+		DBM.RangeCheck:Show(10)
+	end
+end
+
+function mod:OnCombatEnd()
+	if self:IsSeasonal() and self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 do

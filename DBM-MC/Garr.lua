@@ -21,6 +21,7 @@ local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
 local warnImmolate			= mod:NewTargetNoFilterAnnounce(15732, 2, nil, false, 3)--Still feels spammy, they can opt into this if they want it
 
 local timerAntiMagicPulseCD	= mod:NewCDTimer(15.7, 19492, nil, nil, nil, 2)--15.7-20 variation
+mod:AddTimerLine(DBM_COMMON_L.SEASONAL)
 local timerMagmakinCD		= mod:NewCDTimer(4.9, 20506, nil, nil, nil, 3)--4.9-6 sec
 
 mod:AddRangeFrameOption(10, 20508)--or 20506, it's 20506 that cast 20508

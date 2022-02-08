@@ -21,6 +21,12 @@ mod:RegisterEventsInCombat(
 	"UNIT_HEALTH mouseover target"
 )
 
+--TODO, not enough data to verify fear CD increase yet. Only a single group managed to get meaningful logs on PTR (at least publically)
+--[[
+(ability.id = 22539 or ability.id = 22686) and type = "begincast"
+ or (ability.id = 22687 or ability.id = 22667) and type = "cast"
+ or (target.id = 14264 or target.id = 14263 or target.id = 14261 or target.id = 14265 or target.id = 14262 or target.id = 14302) and type = "death"
+--]]
 local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "136116")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
 local warnPhase				= mod:NewPhaseChangeAnnounce()
@@ -34,7 +40,7 @@ local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, 
 
 local timerPhase			= mod:NewPhaseTimer(15)
 local timerClassCall		= mod:NewTimer(30, "TimerClassCall", "136116", nil, nil, 5)
-local timerFearNext			= mod:NewCDTimer(26.7, 22686, nil, nil, 3, 2)--26-42.5
+local timerFearNext			= mod:NewCDTimer(26.7, 22686, nil, nil, 3, 2)--26-69.6
 
 mod.vb.addLeft = 42
 local addsGuidCheck = {}
@@ -79,7 +85,7 @@ do
 		--elseif args.spellId == 22686 then
 		elseif args.spellName == BellowingRoar then
 			warnFear:Show()
-			timerFearNext:Start()
+			timerFearNext:Start(self:IsSeasonal() and 50 or 26.7)
 		end
 	end
 end
@@ -169,7 +175,7 @@ function mod:OnSync(msg, arg, sender)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	end
 	if not self:IsInCombat() then return end
-	if msg == "ClassCall" and arg then
+	if msg == "ClassCall" and sender then
 		local className = LOCALIZED_CLASS_NAMES_MALE[arg]
 		if UnitClass("player") == className then
 			specwarnClassCall:Show()

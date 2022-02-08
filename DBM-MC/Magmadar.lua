@@ -29,6 +29,7 @@ local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, n
 
 local timerPanicCD		= mod:NewCDTimer(30, 19408, nil, nil, nil, 2)--30-50
 local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+mod:AddTimerLine(DBM_COMMON_L.SEASONAL)
 local timerAddsCD		= mod:NewAddsTimer(60, 19497, nil, "-Healer", nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)--Use 363731 if it has better icon?
 
 function mod:OnCombatStart(delay)

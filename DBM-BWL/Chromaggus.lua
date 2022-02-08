@@ -16,7 +16,8 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
---(ability.id = 23309 or ability.id = 23313 or ability.id = 23189 or ability.id = 23315 or ability.id = 23312) and type = "begincast"
+--TODO, maybe announce ice tomb spawns? could be spammy though
+--(ability.id = 23308 or ability.id = 23309 or ability.id = 23313 or ability.id = 23314 or ability.id = 23197 or ability.id = 23189 or ability.id = 23315 or ability.id = 23316 or ability.id = 23310 or ability.id = 23312) and type = "begincast"
 local warnBreath		= mod:NewAnnounce("WarnBreath", 2, 23316)
 local warnRed			= mod:NewSpellAnnounce(23155, 2, nil, false)
 local warnGreen			= mod:NewSpellAnnounce(23169, 2, nil, false)
@@ -35,6 +36,10 @@ local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 4, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
 local timerVuln			= mod:NewTimer(17, "TimerVulnCD")-- seen 16.94 - 25.53, avg 21.8
+--SoM Stuff
+mod:AddTimerLine(DBM_COMMON_L.SEASONAL)
+local specWarnBreath	= mod:NewSpecialWarningMoveTo(22268, nil, nil, nil, 3, 2)
+local specWarnGTFO		= mod:NewSpecialWarningGTFO(367688, nil, nil, nil, 1, 8)
 
 mod:AddNamePlateOption("NPAuraOnVulnerable", 22277)
 mod:AddInfoFrameOption(22277, true)
@@ -164,17 +169,42 @@ end
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
-	timerBreathCD:Start(30-delay, L.Breath1)
-	timerBreathCD:Start(60-delay, L.Breath2)--60
+	if self:IsSeasonal() then
+		timerBreathCD:Start(30-delay, L.Breath)
+	else
+		timerBreathCD:Start(30-delay, L.Breath1)
+		timerBreathCD:Start(60-delay, L.Breath2)--60
+	end
 	mydebuffs = 0
 	table.wipe(vulnerabilities)
-	if self.Options.WarnVulnerable then--Don't register high cpu combat log events if option isn't enabled
-		self:RegisterShortTermEvents(
-			"SPELL_DAMAGE"
-		)
-		check_target_vulns(self)
-		if self.Options.NPAuraOnVulnerable then
-			DBM:FireEvent("BossMod_EnableHostileNameplates")
+	if self:IsDifficulty("event40") or not self:IsTrivial(75) then--Only want to warn if it's a threat
+		if self:IsSeasonal() then
+			if self.Options.WarnVulnerable then--Don't register high cpu combat log events if option isn't enabled
+				self:RegisterShortTermEvents(
+					"SPELL_DAMAGE",
+					"SPELL_PERIODIC_DAMAGE 367688",
+					"SPELL_PERIODIC_MISSED 367688"
+				)
+				check_target_vulns(self)
+				if self.Options.NPAuraOnVulnerable then
+					DBM:FireEvent("BossMod_EnableHostileNameplates")
+				end
+			else
+				self:RegisterShortTermEvents(
+					"SPELL_PERIODIC_DAMAGE 367688",
+					"SPELL_PERIODIC_MISSED 367688"
+				)
+			end
+		else
+			if self.Options.WarnVulnerable then--Don't register high cpu combat log events if option isn't enabled
+				self:RegisterShortTermEvents(
+					"SPELL_DAMAGE"
+				)
+				check_target_vulns(self)
+				if self.Options.NPAuraOnVulnerable then
+					DBM:FireEvent("BossMod_EnableHostileNameplates")
+				end
+			end
 		end
 	end
 end
@@ -191,14 +221,26 @@ function mod:OnCombatEnd()
 end
 
 do
+	local frostTomb = DBM:GetSpellInfo(367672)
 	function mod:SPELL_CAST_START(args)
 		--if args:IsSpellID(23309, 23313, 23189, 23315, 23312) then
 		if args.spellName == Incinerate or args.spellName == CorrosiveAcid or args.spellName == FrostBurn or args.spellName == IgniteFlesh or args.spellName == TimeLaps then
-			warnBreath:Show(args.spellName)
 			timerBreath:Start(2, args.spellName)
-			timerBreath:UpdateIcon(spellIcons[args.spellName])
-			timerBreathCD:Start(60, args.spellName)
-			timerBreathCD:UpdateIcon(spellIcons[args.spellName])
+			if self:IsSeasonal() then
+				if self.Options.SpecWarn22268moveto then
+					specWarnBreath:Show(frostTomb)
+					specWarnBreath:Play("findshelter")
+				else
+					warnBreath:Show(args.spellName)
+				end
+				--In seasonal it's all breaths, in random order
+				timerBreathCD:Start(30.7, L.Breath)
+			else--Out of season it's two types alternating
+				warnBreath:Show(args.spellName)
+				timerBreath:UpdateIcon(spellIcons[args.spellName])
+				timerBreathCD:Start(60, args.spellName)
+				timerBreathCD:UpdateIcon(spellIcons[args.spellName])
+			end
 		end
 	end
 end
@@ -303,6 +345,18 @@ end
 
 function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, _, _, spellSchool, amount, _, _, _, _, _, critical)
 	check_spell_damage(self, destGUID, amount, spellSchool, critical)
+end
+
+do
+	local FirePitch = DBM:GetSpellInfo(367688)
+	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
+		--if spellId == 367688 and destGUID == UnitGUID("player") and self:AntiSpam() then
+		if spellName == FirePitch and destGUID == UnitGUID("player") and self:AntiSpam(3, 7) then
+			specWarnGTFO:Show(spellName)
+			specWarnGTFO:Play("watchfeet")
+		end
+	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
 
 function mod:UNIT_HEALTH(uId)

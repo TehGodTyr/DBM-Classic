@@ -1,3 +1,4 @@
+if DBM:IsSeasonal() then return end--In SoM Flamegor and Ebonroc are a single encounter
 local mod	= DBM:NewMod("Flamegor", "DBM-BWL", 1)
 local L		= mod:GetLocalizedStrings()
 
