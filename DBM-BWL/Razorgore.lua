@@ -39,6 +39,7 @@ local specWarnFireballVolley= mod:NewSpecialWarningMoveTo(22425, false, nil, nil
 
 local timerAddsSpawn		= mod:NewTimer(47, "TimerAddsSpawn", 19879, nil, nil, 1)--Only for start of adds, not adds after the adds.
 
+mod:AddSpeedClearOption("BWL", true)
 --SoM Only
 mod:AddTimerLine(DBM_COMMON_L.SEASONAL)
 local warnBrandofShadow		= mod:NewTargetNoFilterAnnounce(364455, 2)--Basically used as a chromatic drake spawn warning
@@ -48,8 +49,6 @@ local warnBlindingAsh		= mod:NewTargetAnnounce(367873, 2)--Black
 local warnTemporalAcc		= mod:NewTargetNoFilterAnnounce(367756, 2)--Bronze
 
 local timerSpecialCD		= mod:NewCDSpecialTimer(10)--Missing Azure and Obsidian triggers to make it work semi decent, a better bronze trigger would be nice too
-
-mod:AddSpeedClearOption("BWL", true)
 
 mod.vb.eggsLeft = 30
 mod.vb.firstEngageTime = nil
