@@ -142,6 +142,8 @@ do
 			end
 		end
 	end
+	mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
 	function mod:SPELL_AURA_REMOVED(args)--did not see ebon use any of these abilities
 		--if args.spellId == 23342 then
 		if args.spellName == Frenzy then
