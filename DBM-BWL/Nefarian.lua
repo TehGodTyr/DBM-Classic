@@ -160,7 +160,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:OnSync(msg, arg, sender)
-	if self:AntiSpam(5, msg) then
+	if sender and self:AntiSpam(5, msg) then
 		--Do nothing, this is just an antispam threshold for syncing
 	end
 	if msg == "Phase" and sender then
