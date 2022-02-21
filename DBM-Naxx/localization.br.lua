@@ -331,8 +331,6 @@ L:SetOptionLocalization({
 	WarningLanded		= "Anunciar mudança de fase no solo",
 	TimerAir			= "Exibir cronômetro para mudança para fase de ar",
 	TimerLanding		= "Exibir cronômetro para mudança de fase no terra",
-	TimerIceBlast		= "Exibir cronômetro para $spell:28524",
-	WarningDeepBreath	= "Exibir aviso especial para $spell:28524",
 	WarningIceblock		= "Grite quando te afeta $spell:28522"
 })
 
@@ -344,14 +342,12 @@ L:SetMiscLocalization({
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Fase aérea em 10 s",
 	WarningAirPhaseNow	= "Fase aérea",
-	WarningLanded		= "Fase em terra",
-	WarningDeepBreath	= "Sopro Gélido"
+	WarningLanded		= "Fase em terra"
 })
 
 L:SetTimerLocalization({
 	TimerAir		= "Fase aérea",
-	TimerLanding	= "Fase em terra",
-	TimerIceBlast	= "Sopro Gélido"
+	TimerLanding	= "Fase em terra"
 })
 
 ----------------

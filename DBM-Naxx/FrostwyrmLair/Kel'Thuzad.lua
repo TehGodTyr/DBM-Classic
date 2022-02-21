@@ -31,10 +31,10 @@ local warnChainsTargets		= mod:NewTargetNoFilterAnnounce(28410, 4)
 
 local specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
 local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, nil, nil, nil, 1, 2)
+local yellManaBomb			= mod:NewShortYell(27819)
 local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2)
 local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
 local specWarnFissureClose	= mod:NewSpecialWarningClose(27810, nil, nil, nil, 2, 2)
-local yellManaBomb			= mod:NewShortYell(27819)
 local yellFissure			= mod:NewYell(27810)
 
 --Fissure timer is 13-30 or something pretty wide, so no timer

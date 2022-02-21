@@ -17,17 +17,18 @@ mod:RegisterEventsInCombat(
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
 local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
-local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
-local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
+
+local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged", nil, nil, nil, 3, 2, nil, nil, 28089)
+local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false, nil, nil, 1, 12, nil, nil, 28089)
 
 local enrageTimer			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewCDTimer(25.9, 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)--25.9-34
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-mod:AddDropdownOption("ArrowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "ArrowsRightLeft", "misc")
+mod:AddDropdownOption("ArrowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "ArrowsRightLeft", "misc", nil, 28089)
 
 local currentCharge
 local down = 0
@@ -83,6 +84,7 @@ function mod:UNIT_AURA()
 		--Did not Change
 		if charge == currentCharge then
 			warnChargeNotChanged:Show()
+			warnChargeNotChanged:Play("dontmove")
 			if self.Options.ArrowsEnabled == "ArrowsInverse" then
 				self:ShowLeftArrow()
 			elseif self.Options.ArrowsEnabled == "ArrowsRightLeft" then
@@ -91,6 +93,7 @@ function mod:UNIT_AURA()
 		--Changed
 		else
 			warnChargeChanged:Show(charge)
+			warnChargeChanged:Play("stilldanger")
 			if self.Options.ArrowsEnabled == "ArrowsInverse" then
 				self:ShowRightArrow()
 			elseif self.Options.ArrowsEnabled == "ArrowsRightLeft" then

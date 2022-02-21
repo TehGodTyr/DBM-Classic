@@ -332,8 +332,6 @@ L:SetOptionLocalization({
 	WarningLanded		= "Объявлять Наземную фазу",
 	TimerAir			= "Отсчет времени до Воздушной фазы",
 	TimerLanding		= "Отсчет времени до приземления",
-	TimerIceBlast		= "Отсчет времени до Ледяного дыхания",
-	WarningDeepBreath	= "Специальное объявление Ледяного Дыхания",
 	WarningIceblock		= "Кричать, когда вы в Ледяной глыбе"
 })
 
@@ -345,14 +343,12 @@ L:SetMiscLocalization({
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Воздушная фаза через 10 секунд",
 	WarningAirPhaseNow	= "Воздушная фаза",
-	WarningLanded		= "Сапфирон приземляется",
-	WarningDeepBreath	= "Ледяное дыхание"
+	WarningLanded		= "Сапфирон приземляется"
 })
 
 L:SetTimerLocalization({
 	TimerAir		= "Воздушная фаза",
-	TimerLanding	= "Приземление",
-	TimerIceBlast	= "Ледяное дыхание"
+	TimerLanding	= "Приземление"
 })
 
 ------------------

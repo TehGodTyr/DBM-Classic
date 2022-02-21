@@ -28,7 +28,7 @@ mod.vb.enraged = false
 
 function mod:OnCombatStart(delay)
 	timerEnrage:Start(-delay)
-	warnEnrageSoon:Schedule(55 - delay)
+	warnEnrageSoon:Schedule(51 - delay)
 	self.vb.enraged = false
 end
 

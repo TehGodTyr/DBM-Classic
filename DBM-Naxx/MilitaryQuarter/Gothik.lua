@@ -11,7 +11,6 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
---TODO, actual naxx 40 waves, right now 25 man are used
 --(source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 local warnWaveNow		= mod:NewAnnounce("WarningWaveSpawned", 3, nil, false)
 local warnWaveSoon		= mod:NewAnnounce("WarningWaveSoon", 2)
@@ -78,9 +77,7 @@ do
 	end
 end
 
---TODO, actual wave info and timer verification, this is Naxx25 data
-
-local wavesClassic = {
+local wavesClassicEra = {
 	{3, L.Trainee, next = 20},
 	{3, L.Trainee, next = 20},
 	{3, L.Trainee, next = 10},
@@ -101,31 +98,8 @@ local wavesClassic = {
 	{1, L.Rider, 2, L.Knight, 3, L.Trainee},
 }
 
---[[
-local wavesWrath25 = {
-	{3, L.Trainee, next = 20},
-	{3, L.Trainee, next = 20},
-	{3, L.Trainee, next = 10},
-	{2, L.Knight, next = 10},
-	{3, L.Trainee, next = 15},
-	{2, L.Knight, next = 5},
-	{3, L.Trainee, next = 20},
-	{3, L.Trainee, 2, L.Knight, next = 10},
-	{3, L.Trainee, next = 10},
-	{1, L.Rider, next = 5},
-	{3, L.Trainee, next = 15},
-	{1, L.Rider, next = 10},
-	{2, L.Knight, next = 10},
-	{1, L.Rider, next = 10},
-	{1, L.Rider, 3, L.Trainee, next = 5},
-	{1, L.Knight, 3, L.Trainee, next = 5},
-	{1, L.Rider, 3, L.Trainee, next = 20},
-	{1, L.Rider, 2, L.Knight, 3, L.Trainee},
-}
---]]
-
 local function getWaveString(wave)
-	local waveInfo = wavesClassic[wave]
+	local waveInfo = wavesClassicEra[wave]
 	if #waveInfo == 2 then
 		return L.WarningWave1:format(unpack(waveInfo))
 	elseif #waveInfo == 4 then
@@ -138,13 +112,13 @@ end
 function mod:NextWave()
 	self.vb.wave = self.vb.wave + 1
 	warnWaveNow:Show(self.vb.wave, getWaveString(self.vb.wave))
-	for i, num in ipairs(wavesClassic[self.vb.wave]) do
+	for i, num in ipairs(wavesClassicEra[self.vb.wave]) do
 		if i % 2 == 1 then
-			local cid = liveMobNames[wavesClassic[self.vb.wave][i + 1]]
+			local cid = liveMobNames[wavesClassicEra[self.vb.wave][i + 1]]
 			mobCounts[cid] = (mobCounts[cid] or 0) + num
 		end
 	end
-	local next = wavesClassic[self.vb.wave].next
+	local next = wavesClassicEra[self.vb.wave].next
 	if next then
 		timerWave:Start(next, self.vb.wave + 1)
 		warnWaveSoon:Schedule(next - 3, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
