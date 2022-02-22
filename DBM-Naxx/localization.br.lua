@@ -212,7 +212,7 @@ L:SetMiscLocalization({
 L:SetOptionLocalization({
 	WarningChargeChanged	= "Exibir aviso especial quando sua polaridade mudar",
 	WarningChargeNotChanged	= "Exibir aviso especial quando sua polaridade não mudar",
-	ArrowsEnabled			= "Exibir setas (estratégia típica de dois grupos)",
+	AirowsEnabled			= "Exibir setas (estratégia típica de dois grupos)",
 	ArrowsRightLeft			= "Exibe as setas para a esquerda e direita (estratégia de quatro grupos; mostra a seta para a esquerda se a polaridade mudar, seta para a direita se não mudar)",
 	ArrowsInverse			= "Exibe as setas esquerda e direita reversas (estratégia de quatro grupos; mostra a seta para a direita se a polaridade mudar, a seta para a esquerda se não mudar)"
 })

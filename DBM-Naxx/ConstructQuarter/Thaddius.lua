@@ -28,7 +28,7 @@ local timerNextShift		= mod:NewCDTimer(25.9, 28089, nil, nil, nil, 2, nil, DBM_C
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-mod:AddDropdownOption("ArrowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "ArrowsRightLeft", "misc", nil, 28089)
+mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "ArrowsRightLeft", "misc", nil, 28089)
 
 local currentCharge
 local down = 0
