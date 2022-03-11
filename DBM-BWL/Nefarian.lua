@@ -131,58 +131,77 @@ function mod:UNIT_HEALTH(uId)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellDK or msg:find(L.YellDK) then--This mod will likely persist all the way til Classic WoTLK, don't remove DK
-		self:SendSync("ClassCall", "DEATHKNIGHT")
-	elseif (msg == L.YellDruid or msg:find(L.YellDruid)) and self:AntiSpam(5, "ClassCall") then
-		self:SendSync("ClassCall", "DRUID")
-	elseif (msg == L.YellHunter or msg:find(L.YellHunter)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "HUNTER")
-	elseif (msg == L.YellWarlock or msg:find(L.YellWarlock)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "WARLOCK")
-	elseif (msg == L.YellMage or msg:find(L.YellMage)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "MAGE")
-	elseif (msg == L.YellPaladin or msg:find(L.YellPaladin)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "PALADIN")
-	elseif (msg == L.YellPriest or msg:find(L.YellPriest)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "PRIEST")
-	elseif (msg == L.YellRogue or msg:find(L.YellRogue)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "ROGUE")
-	elseif (msg == L.YellShaman or msg:find(L.YellShaman)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "SHAMAN")
-	elseif (msg == L.YellWarrior or msg:find(L.YellWarrior)) and self:AntiSpam(5, "ClassCall")  then
-		self:SendSync("ClassCall", "WARRIOR")
-	elseif msg == L.YellP2 or msg:find(L.YellP2) then
-		self:SendSync("Phase", 2)
-	elseif msg == L.YellP3 or msg:find(L.YellP3) then
-		self:SendSync("Phase", 3)
+do
+	local playerName = UnitName("player")
+	local function blizzardAreAssholes(self, msg, arg, sender)
+		if sender and self:AntiSpam(5, msg) then
+			--Do nothing, this is just an antispam threshold for syncing
+		end
+		if msg == "Phase" and sender then
+			local phase = tonumber(arg) or 0
+			if phase == 2 then
+				self:SetStage(2)
+				timerPhase:Start(15)--15 til encounter start fires, not til actual land?
+				--timerFearNext:Start(46.6)
+			elseif phase == 3 then
+				self:SetStage(3)
+			end
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
+		end
+		if not self:IsInCombat() then return end
+		if msg == "ClassCall" and sender then
+			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
+			if UnitClass("player") == className then
+				specwarnClassCall:Show()
+				specwarnClassCall:Play("targetyou")
+			else
+				warnClassCall:Show(className)
+			end
+			timerClassCall:Start(30, className)
+		end
 	end
-end
 
-function mod:OnSync(msg, arg, sender)
-	if sender and self:AntiSpam(5, msg) then
-		--Do nothing, this is just an antispam threshold for syncing
-	end
-	if msg == "Phase" and sender then
-		local phase = tonumber(arg) or 0
-		if phase == 2 then
-			self:SetStage(2)
-			timerPhase:Start(15)--15 til encounter start fires, not til actual land?
-			--timerFearNext:Start(46.6)
-		elseif phase == 3 then
-			self:SetStage(3)
+	function mod:CHAT_MSG_MONSTER_YELL(msg)
+		if msg == L.YellDK or msg:find(L.YellDK) then--This mod will likely persist all the way til Classic WoTLK, don't remove DK
+			self:SendSync("ClassCall", "DEATHKNIGHT")
+			blizzardAreAssholes(self, "ClassCall", "DEATHKNIGHT", playerName)
+		elseif (msg == L.YellDruid or msg:find(L.YellDruid)) and self:AntiSpam(5, "ClassCall") then
+			self:SendSync("ClassCall", "DRUID")
+			blizzardAreAssholes(self, "ClassCall", "DRUID", playerName)
+		elseif (msg == L.YellHunter or msg:find(L.YellHunter)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "HUNTER")
+			blizzardAreAssholes(self, "ClassCall", "HUNTER", playerName)
+		elseif (msg == L.YellWarlock or msg:find(L.YellWarlock)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "WARLOCK")
+			blizzardAreAssholes(self, "ClassCall", "WARLOCK", playerName)
+		elseif (msg == L.YellMage or msg:find(L.YellMage)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "MAGE")
+			blizzardAreAssholes(self, "ClassCall", "MAGE", playerName)
+		elseif (msg == L.YellPaladin or msg:find(L.YellPaladin)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "PALADIN")
+			blizzardAreAssholes(self, "ClassCall", "PALADIN", playerName)
+		elseif (msg == L.YellPriest or msg:find(L.YellPriest)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "PRIEST")
+			blizzardAreAssholes(self, "ClassCall", "PRIEST", playerName)
+		elseif (msg == L.YellRogue or msg:find(L.YellRogue)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "ROGUE")
+			blizzardAreAssholes(self, "ClassCall", "ROGUE", playerName)
+		elseif (msg == L.YellShaman or msg:find(L.YellShaman)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "SHAMAN")
+			blizzardAreAssholes(self, "ClassCall", "SHAMAN", playerName)
+		elseif (msg == L.YellWarrior or msg:find(L.YellWarrior)) and self:AntiSpam(5, "ClassCall")  then
+			self:SendSync("ClassCall", "WARRIOR")
+			blizzardAreAssholes(self, "ClassCall", "WARRIOR", playerName)
+		elseif (msg == L.YellP2 or msg:find(L.YellP2)) and self:AntiSpam(5, "Phase") then
+			self:SendSync("Phase", 2)
+			blizzardAreAssholes(self, "Phase", "2", playerName)
+		elseif (msg == L.YellP3 or msg:find(L.YellP3)) and self:AntiSpam(5, "Phase") then
+			self:SendSync("Phase", 3)
+			blizzardAreAssholes(self, "Phase", "3", playerName)
 		end
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	end
-	if not self:IsInCombat() then return end
-	if msg == "ClassCall" and sender then
-		local className = LOCALIZED_CLASS_NAMES_MALE[arg]
-		if UnitClass("player") == className then
-			specwarnClassCall:Show()
-			specwarnClassCall:Play("targetyou")
-		else
-			warnClassCall:Show(className)
-		end
-		timerClassCall:Start(30, className)
+
+	function mod:OnSync(msg, arg, sender)
+		blizzardAreAssholes(self, msg, arg, sender)
 	end
 end
