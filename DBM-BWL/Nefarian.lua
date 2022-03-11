@@ -134,23 +134,23 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellDK or msg:find(L.YellDK) then--This mod will likely persist all the way til Classic WoTLK, don't remove DK
 		self:SendSync("ClassCall", "DEATHKNIGHT")
-	elseif (msg == L.YellDruid or msg:find(L.YellDruid)) then
+	elseif (msg == L.YellDruid or msg:find(L.YellDruid)) and self:AntiSpam(5, "ClassCall") then
 		self:SendSync("ClassCall", "DRUID")
-	elseif (msg == L.YellHunter or msg:find(L.YellHunter)) then
+	elseif (msg == L.YellHunter or msg:find(L.YellHunter)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "HUNTER")
-	elseif (msg == L.YellWarlock or msg:find(L.YellWarlock)) then
+	elseif (msg == L.YellWarlock or msg:find(L.YellWarlock)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "WARLOCK")
-	elseif (msg == L.YellMage or msg:find(L.YellMage)) then
+	elseif (msg == L.YellMage or msg:find(L.YellMage)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "MAGE")
-	elseif (msg == L.YellPaladin or msg:find(L.YellPaladin)) then
+	elseif (msg == L.YellPaladin or msg:find(L.YellPaladin)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "PALADIN")
-	elseif (msg == L.YellPriest or msg:find(L.YellPriest)) then
+	elseif (msg == L.YellPriest or msg:find(L.YellPriest)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "PRIEST")
-	elseif (msg == L.YellRogue or msg:find(L.YellRogue)) then
+	elseif (msg == L.YellRogue or msg:find(L.YellRogue)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "ROGUE")
-	elseif (msg == L.YellShaman or msg:find(L.YellShaman)) then
+	elseif (msg == L.YellShaman or msg:find(L.YellShaman)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "SHAMAN")
-	elseif (msg == L.YellWarrior or msg:find(L.YellWarrior)) then
+	elseif (msg == L.YellWarrior or msg:find(L.YellWarrior)) and self:AntiSpam(5, "ClassCall")  then
 		self:SendSync("ClassCall", "WARRIOR")
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
 		self:SendSync("Phase", 2)
@@ -160,6 +160,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:OnSync(msg, arg, sender)
+	if sender and self:AntiSpam(5, msg) then
+		--Do nothing, this is just an antispam threshold for syncing
+	end
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
 		if phase == 2 then
