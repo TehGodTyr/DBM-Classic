@@ -95,7 +95,7 @@ do
 end
 
 function mod:UNIT_HEALTH(uId)
-	if self:GetUnitCreatureId(uId) == 15517 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.23 and not self.vb.prewarn_Berserk then
+	if self:GetUnitCreatureId(uId) == 15517 and UnitHealthMax(uId) and UnitHealthMax(uId) > 0 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.23 and not self.vb.prewarn_Berserk then
 		self.vb.prewarn_Berserk = true
 		warnBerserkSoon:Show()
 	end

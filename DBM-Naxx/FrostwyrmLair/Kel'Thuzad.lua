@@ -172,7 +172,7 @@ do
 end
 
 function mod:UNIT_HEALTH(uId)
-	if not self.vb.warnedAdds and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.48 then
+	if not self.vb.warnedAdds and self:GetUnitCreatureId(uId) == 15990 and UnitHealthMax(uId) and UnitHealthMax(uId) > 0 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.48 then
 		self.vb.warnedAdds = true
 		warnAddsSoon:Show()
 	end

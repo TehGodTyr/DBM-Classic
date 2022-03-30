@@ -92,7 +92,7 @@ do
 end
 
 function mod:UNIT_HEALTH(uId)
-	if self:GetUnitCreatureId(uId) == 15263 then
+	if self:GetUnitCreatureId(uId) == 15263 and UnitHealthMax(uId) and UnitHealthMax(uId) > 0 then
 		local percent = UnitHealth(uId) / UnitHealthMax(uId) * 100
 		if percent <= 81 and percent >= 77 and self.vb.splitCount < 1 then
 			warnSummonSoon:Show()

@@ -44,7 +44,7 @@ do
 end
 
 function mod:UNIT_HEALTH(uId)
-	if self.vb.phase < 2 and self:GetUnitCreatureId(uId) == 15369 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
+	if self.vb.phase < 2 and self:GetUnitCreatureId(uId) == 15369 and UnitHealthMax(uId) and UnitHealthMax(uId) > 0 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
 		self:SetStage(2)
 		warnPhase2:Show()
 	end
