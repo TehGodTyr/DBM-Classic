@@ -73,7 +73,7 @@ do
 				--Also, process their target information for tentacles
 				local targetuId = uId.."target"
 				local guid = UnitGUID(targetuId)
-				if guid and (mod:GetCIDFromGUID(guid) == 15802) and not diedTentacles[guid] and UnitHealthMax(targetuId) and UnitHealthMax(targetuId) > 0 and  then--Targetting Flesh Tentacle
+				if guid and (mod:GetCIDFromGUID(guid) == 15802) and not diedTentacles[guid] and UnitHealthMax(targetuId) and UnitHealthMax(targetuId) > 0 then--Targetting Flesh Tentacle
 					fleshTentacles[guid] = math.floor(UnitHealth(targetuId) / UnitHealthMax(targetuId) * 100)
 				end
 			end
