@@ -12,6 +12,7 @@ externals:
   DBM-Azeroth/Libs/LibDataBroker-1.1: https://github.com/tekkub/libdatabroker-1-1
   DBM-Azeroth/Libs/LibDeflate: https://github.com/SafeteeWoW/LibDeflate
   DBM-Azeroth/Libs/LibSerialize: https://github.com/rossnichols/LibSerialize
+  DBM-Azeroth/Libs/LibSpecialization: https://repos.wowace.com/wow/libspecialization/trunk/LibSpecialization
   DBM-VPVEM: https://github.com/DeadlyBossMods/DBM-Voicepack-VEM
 
 ignore:
