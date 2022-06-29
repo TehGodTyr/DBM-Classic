@@ -301,7 +301,7 @@ L:SetOptionLocalization({
 	timerMark					= "다음 기사의 징표 타이머 바 보기 (횟수 포함)",
 })
 
-L:SetWarningLocalization({
+L:SetTimerLocalization({
 	timerMark	= "%d번 징표",
 })
 

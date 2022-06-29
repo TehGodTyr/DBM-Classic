@@ -19,8 +19,8 @@ local warnSporeNow			= mod:NewCountAnnounce(29234, 2, "134530")
 local warnSporeSoon			= mod:NewSoonAnnounce(29234, 1, "134530")
 local warnDoomNow			= mod:NewSpellAnnounce(29204, 3)
 local warnRemoveCurse		= mod:NewSpellAnnounce(30281, 3)
-local warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184)
-local warnHealNow			= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
+local warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184, nil, nil, nil, 29184)
+local warnHealNow			= mod:NewAnnounce("WarningHealNow", 1, 29184, false, nil, nil, 29184)
 
 local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, nil, nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)-- initial 11.3 then 12.92-12.99
 local timerDoom				= mod:NewNextTimer(29, 29204, nil, nil, nil, 2)-- initial 130 then 29.1-32.4
