@@ -37,7 +37,6 @@ do
 	function mod:SPELL_AURA_APPLIED(args)
 		--if args:IsSpellID(28798, 54100) then -- Frenzy
 		if args.spellName == Frenzy and args:IsDestTypeHostile() then -- Frenzy
-			warnEnrageNow:Show()
 			self.vb.enraged = true
 			--if self:IsTanking("player", "boss1", nil, true) then
 			if self:IsTanking("player", nil, nil, nil, args.destGUID) then--Basically, HAS to be bosses current target
