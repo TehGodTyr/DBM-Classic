@@ -72,12 +72,12 @@ function mod:UNIT_AURA()
 	local charge
 	local i = 1
 	while UnitDebuff("player", i) do
-		local _, icon, count = UnitDebuff("player", i)
+		local _, icon, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = UnitDebuff("player", i)
 		if icon == "Interface\\Icons\\Spell_ChargeNegative" or icon == 135768 then--Not sure if classic will return data ID or path, so include both
-			if count > 1 then return end
+			if (count2 or count) > 1 then return end
 			charge = L.Charge1
 		elseif icon == "Interface\\Icons\\Spell_ChargePositive" or icon == 135769 then--Not sure if classic will return data ID or path, so include both
-			if count > 1 then return end
+			if (count2 or count) > 1 then return end
 			charge = L.Charge2
 		end
 		i = i + 1
