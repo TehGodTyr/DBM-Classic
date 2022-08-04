@@ -31,7 +31,7 @@ local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMM
 if not DBM.Options.GroupOptionsBySpell then
 	mod:AddMiscLine(DBM_CORE_L.OPTION_CATEGORY_DROPDOWNS)
 end
-mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "ArrowsRightLeft", "misc", nil, 28089)
+mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "Never", "misc", nil, 28089)
 
 local currentCharge
 local down = 0
