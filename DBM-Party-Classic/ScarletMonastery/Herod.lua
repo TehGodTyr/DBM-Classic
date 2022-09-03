@@ -26,7 +26,7 @@ do
 	local Enrage = DBM:GetSpellInfo(8269)
 	function mod:SPELL_AURA_APPLIED(args)
 		--if args.spellId == 8269 then
-		if args.spellName == Whirlwind and args:IsDestTypeHostile() then
+		if args.spellName == Whirlwind and args:IsDestTypeHostile() and self:AntiSpam(3, 1) then
 			specWarnWhirlwind:Show()
 			specWarnWhirlwind:Play("justrun")
 			timerWhirlwindCD:Start()
