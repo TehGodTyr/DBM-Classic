@@ -12,8 +12,9 @@ mod:RegisterEventsInCombat(
 )
 
 local warningEnrage					= mod:NewTargetNoFilterAnnounce(8269, 2)
+local warningWhirlwind				= mod:NewSpellAnnounce(8989, 2)
 
-local specWarnWhirlwind				= mod:NewSpecialWarningRun(8989, nil, nil, nil, 4, 2)
+local specWarnWhirlwind				= mod:NewSpecialWarningRun(8989, false, nil, 2, 4, 2)
 
 local timerWhirlwindCD				= mod:NewCDTimer(18, 8989, nil, nil, nil, 4, nil, DBM_COMMON_L.DEADLY_ICON)
 
@@ -27,8 +28,12 @@ do
 	function mod:SPELL_AURA_APPLIED(args)
 		--if args.spellId == 8269 then
 		if args.spellName == Whirlwind and args:IsDestTypeHostile() and self:AntiSpam(3, 1) then
-			specWarnWhirlwind:Show()
-			specWarnWhirlwind:Play("justrun")
+			if self.Options.SpecWarn8269run then
+				specWarnWhirlwind:Show()
+				specWarnWhirlwind:Play("justrun")
+			else
+				warningWhirlwind:Show()
+			end
 			timerWhirlwindCD:Start()
 		elseif args.spellName == Enrage and args:IsDestTypeHostile() then
 			warningEnrage:Show(args.destName)
