@@ -28,8 +28,8 @@ end
 do
 	local FeveredPlague = DBM:GetSpellInfo(8600)
 	function mod:SPELL_AURA_APPLIED(args)
-		--if args.spellId == 8600 and self:CheckDispelFilter() then
-		if args.spellName == FeveredPlague and args:IsDestTypePlayer() and self:CheckDispelFilter() then
+		--if args.spellId == 8600 and self:CheckDispelFilter("disease") then
+		if args.spellName == FeveredPlague and args:IsDestTypePlayer() and self:CheckDispelFilter("disease") then
 			warningFeveredPlague:Show(args.destName)
 		end
 	end

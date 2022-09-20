@@ -60,8 +60,8 @@ do
 		--if args.spellId == 8040 then
 		if args.spellName == DruidsSlumber and args:IsDestTypePlayer() then
 			warningDruidSlumber:Show(args.destName)
-		--elseif args.spellId == 17330 and self:CheckDispelFilter() then
-		elseif args.spellName == Poison and args:IsDestTypePlayer() and self:CheckDispelFilter() then
+		--elseif args.spellId == 17330 and self:CheckDispelFilter("poison") then
+		elseif args.spellName == Poison and args:IsDestTypePlayer() and self:CheckDispelFilter("poison") then
 			warningPoison:Show(args.destName)
 		end
 	end

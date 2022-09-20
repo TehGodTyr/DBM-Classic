@@ -71,7 +71,7 @@ do
 			if self:IsSeasonal() then--3 bombs, aggregate
 				warnBomb:CombinedShow(0.5, args.destName)
 			end
-		elseif spellName == Ignite and self:CheckDispelFilter() then
+		elseif spellName == Ignite and self:CheckDispelFilter("magic") then
 			specWarnIgnite:CombinedShow(0.3, args.destName)
 			specWarnIgnite:ScheduleVoice(0.3, "helpdispel")
 		end

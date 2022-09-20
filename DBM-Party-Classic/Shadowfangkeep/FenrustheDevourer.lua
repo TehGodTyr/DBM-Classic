@@ -29,8 +29,8 @@ do
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		--if args.spellId == 7125 and self:CheckDispelFilter() then
-		if args.spellName == ToxicSaliva and self:CheckDispelFilter() then
+		--if args.spellId == 7125 and self:CheckDispelFilter("poison") then
+		if args.spellName == ToxicSaliva and self:CheckDispelFilter("poison") then
 			warningToxicSaliva:Show(args.destName)
 		end
 	end

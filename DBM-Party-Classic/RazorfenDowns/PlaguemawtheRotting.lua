@@ -32,12 +32,12 @@ do
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		--if args.spellId == 12946 and self:CheckDispelFilter() then
-		if args.spellName == PutridStench and self:CheckDispelFilter() then
+		--if args.spellId == 12946 and self:CheckDispelFilter("disease") then
+		if args.spellName == PutridStench and self:CheckDispelFilter("disease") then
 			specWarnPutridStench:Show(args.destName)
 			specWarnPutridStench:Play("helpdispel")
-		--elseif args.spellId == 11442 and self:CheckDispelFilter() then
-		elseif args.spellName == WitheredTouch and self:CheckDispelFilter() then
+		--elseif args.spellId == 11442 and self:CheckDispelFilter("disease") then
+		elseif args.spellName == WitheredTouch and self:CheckDispelFilter("disease") then
 			warningWitheredTouch:Show(args.destName)
 		end
 	end

@@ -30,8 +30,8 @@ do
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		--if args.spellId == 744 and self:CheckDispelFilter() then
-		if args.spellName == DeadlyPoison and args:IsDestTypePlayer() and self:CheckDispelFilter() then
+		--if args.spellId == 744 and self:CheckDispelFilter("poison") then
+		if args.spellName == DeadlyPoison and args:IsDestTypePlayer() and self:CheckDispelFilter("poison") then
 			warningDeadlyPoison:Show(args.destName)
 		end
 	end

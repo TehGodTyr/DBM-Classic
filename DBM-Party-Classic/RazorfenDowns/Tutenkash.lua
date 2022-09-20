@@ -37,8 +37,8 @@ do
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		--if args.spellId == 12255 and self:CheckDispelFilter() then
-		if args.spellId == CurseofTut and self:CheckDispelFilter() then
+		--if args.spellId == 12255 and self:CheckDispelFilter("curse") then
+		if args.spellId == CurseofTut and self:CheckDispelFilter("curse") then
 			warningCurseofTut:Show(args.destName)
 		end
 	end
