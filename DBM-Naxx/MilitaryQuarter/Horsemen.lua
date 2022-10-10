@@ -6,8 +6,8 @@ mod:SetCreatureID(16062, 16063, 16064, 16065)--30549
 mod:SetEncounterID(1121)
 mod:SetModelID(10729)
 mod:SetBossHPInfoToHighest()
+
 mod:RegisterCombat("combat")
-mod:SetBossHPInfoToHighest()
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 28832 28833 28834 28835 28863 28883 28884",
