@@ -1,4 +1,4 @@
-local mod	= DBM:NewMod("RasFrostwhisper", "DBM-Party-Classic", 13)
+local mod	= DBM:NewMod("RasFrostwhisper", "DBM-Party-Vanilla", 13)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")

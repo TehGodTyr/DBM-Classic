@@ -1,4 +1,4 @@
-local mod	= DBM:NewMod("DeathSpeakerJargba", "DBM-Party-Classic", 11)
+local mod	= DBM:NewMod("DeathSpeakerJargba", "DBM-Party-Vanilla", 11)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")

@@ -1,4 +1,4 @@
-local mod	= DBM:NewMod("JedRunewatcher", "DBM-Party-Classic", 4)
+local mod	= DBM:NewMod("JedRunewatcher", "DBM-Party-Vanilla", 4)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")

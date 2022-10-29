@@ -1,4 +1,4 @@
-local mod	= DBM:NewMod(481, "DBM-Party-Classic", 19, 240)
+local mod	= DBM:NewMod(481, "DBM-Party-Vanilla", 19, 240)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
