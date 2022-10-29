@@ -31,7 +31,7 @@ ignore:
 enable-nolib-creation: no
 
 move-folders:
-  DBM-Azeroth/DBM-Party-Classic: DBM-Party-Classic
+  DBM-Azeroth/DBM-Party-Vanilla: DBM-Party-Vanilla
   DBM-Azeroth/DBM-AQ20: DBM-AQ20
   DBM-Azeroth/DBM-AQ40: DBM-AQ40
   DBM-Azeroth/DBM-Azeroth: DBM-Azeroth
