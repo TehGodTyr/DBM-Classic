@@ -65,7 +65,7 @@ do
 			timerInjection:Start(args.destName)
 			if self.Options.SetIconOnInjectionTarget then
 				table.insert(mutateIcons, args.destName)
-				addIcon()
+				addIcon(self)
 			end
 			if args:IsPlayer() then
 				specWarnInjection:Show()
