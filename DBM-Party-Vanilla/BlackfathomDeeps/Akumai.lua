@@ -25,7 +25,7 @@ end
 
 do
 	local PoisonCloud = DBM:GetSpellInfo(3815)
-	function mod:SPELL_CAST_SUCCESS(args)
+	function mod:SPELL_CAST_START(args)
 		--if args.spellId == 3815 then
 		if args.spellName == PoisonCloud then
 			warningPoisonCloud:Show()

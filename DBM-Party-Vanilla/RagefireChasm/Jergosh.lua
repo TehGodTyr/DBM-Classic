@@ -8,8 +8,8 @@ mod:SetCreatureID(11518)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 6304 20800",
-	"SPELL_AURA_APPLIED 6304 20800"
+	"SPELL_CAST_SUCCESS 18267 20800",
+	"SPELL_AURA_APPLIED 18267 20800"
 )
 
 local warningCurseofWeakness			= mod:NewTargetNoFilterAnnounce(18267, 2)

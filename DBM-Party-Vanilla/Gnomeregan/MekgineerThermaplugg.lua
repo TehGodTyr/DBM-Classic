@@ -23,7 +23,7 @@ end
 do
 	local KnockAway = DBM:GetSpellInfo(10101)
 	local BombOne, BombTwo, BombThree, BombFour, BombFive, BombSix = DBM:GetSpellInfo(11518), DBM:GetSpellInfo(11521), DBM:GetSpellInfo(11798), DBM:GetSpellInfo(11524), DBM:GetSpellInfo(11526), DBM:GetSpellInfo(11527)
-	function mod:SPELL_CAST_SUCESS(args)
+	function mod:SPELL_CAST_SUCCESS(args)
 		--local spellId = args.spellId
 		local spellName = args.spellName
 		--if spellId == 10101 or spellId == 11130 then
