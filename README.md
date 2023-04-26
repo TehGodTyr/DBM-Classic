@@ -30,7 +30,7 @@
 Multiple alpha versions can get pushed to Curse/Wago on an average day, these versions may contain important new features or bug fixes for the bleeding edge raid content... These versions are tagged as alpha, so they will not be downloaded by default. Set your addon client to update to alpha if you want these latest versions (but they may contain bugs, downloads tagged as "Beta" or "Release" are more stable and released less frequently)
 Right click on DBM itself in your addon client addon list and set to preferred release type to control update frequency.
 
-## Features
+## Features - TheGodTyr
 * Mods for raids and dungeons
 * Colored raid warnings (players will be colored according to their class) with icons and to the point messaging. DBM aims to let you know what to do for something, not just show you a spell name.
 * A big focus on filtering/hiding what you don't need to know for your role (or what you can't do anything about such as dispel/interrupt on cooldown), so you can focus on the information you do need, while also maintaining ability to disable these filters for leaders that do want a larger overview of fight events.
